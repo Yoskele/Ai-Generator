@@ -1,39 +1,37 @@
-import React from 'react'
-
+import { TypeAnimation } from 'react-type-animation';
 
 
 const GenerateText = () => {
-    
-    const text = document.getElementsByClassName('textInputWritter');
-    console.log('text',text)
-    const prog = "We Love Programming!";
-    let idx = 1;
-    
-    setInterval(writeText, 100);
-    
-    function writeText() {
-        text.innerText = prog.slice(0, idx)
-        
-        idx++;
-        
-        if(idx > prog.length){
-          idx = 1;
-        }
-    
-    }
+
     return(
         <div className='border text-white'>
             <p className='text-center'> GenerateText </p>
-            <div className='textInputWritter' style={{color:'red'}}>{text.innerText}</div>
-            <p>
-                Baby dino with microphone and headphones with music 
-                background 
-            </p>
-
+            <div className='textInputWritter' style={{color:'red'}}>
+                <div>
+                    <TypeAnimation
+                        sequence={[
+                                'Baby dino with microphone and headphones with music background yellow with falling red snow',
+                                2000,
+                                'Cats with microphone and headphones with dancing to music in the outer space',
+                                2000,
+ 
+                            () => {
+                            console.log('Done typing!'); // Place optional callbacks anywhere in the array
+                            }
+                        ]}
+                        wrapper="div"
+                        cursor={true}
+                        //repeat={Infinity}
+                        style={{ fontSize: '1em' }}
+                    />
+                </div>
+            </div>
         </div>
+        
     )
 }
 
 export default GenerateText;
 // Baby dino with microphone and headphones with music 
 // background yellow color with red in artificial intelligence
+
