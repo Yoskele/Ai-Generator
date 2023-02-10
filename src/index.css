@@ -16,6 +16,12 @@ p{
 }
 
 
+#inputGenerateImage::placeholder {
+  color: #EC4899;
+  opacity: 0.9;
+  letter-spacing:3px;
+}
+
 .text-gradient-pink-italic{
   font-style:italic;
   background: -webkit-linear-gradient(#866a80, #e68bdd);

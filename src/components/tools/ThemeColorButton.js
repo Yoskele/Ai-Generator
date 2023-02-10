@@ -7,12 +7,12 @@ const ThemeColorButton = ({ setDarkMode }) => {
     
     const setDarkTheme = () => {
         document.querySelector("body").setAttribute("data-theme", "dark");
-        setDarkMode(true);
+        // setDarkMode(true);
     };
 
     const setLightTheme = () => {
         document.querySelector("body").setAttribute("data-theme", "light");
-        setDarkMode(false);
+        // setDarkMode(false);
     };
 
     const toggleTheme = (e) => {
@@ -27,7 +27,7 @@ const ThemeColorButton = ({ setDarkMode }) => {
                 id='darkmode-toggle'
                 onChange={toggleTheme}
             />
-            <label className='dark_mode_label' for='darkmode-toggle'>
+            <label className='dark_mode_label' htmlFor='darkmode-toggle'>
                 <Moon />
                 <Sun />
             </label>
