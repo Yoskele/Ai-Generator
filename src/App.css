@@ -1,0 +1,27 @@
+
+
+body {
+	background-color: var(--body_background);
+} 
+
+
+
+
+/* :root {
+	--dark: #282c34  ;
+	--darker: #1F2937;
+	--darkest: #111827;
+	--grey: #6B7280;
+	--pink: #EC4899;
+	--purple: #8B5CF6;
+	--light: #EEE;
+}
+
+body {
+	background-color: var(--dark);
+} */
+
+
+/* Good Colors:
+background-color: #282c34;
+color: #61dafb; */
