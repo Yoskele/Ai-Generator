@@ -2,8 +2,7 @@ import { createGlobalState } from 'react-hooks-global-state';
 
 
 const { setGlobalState, useGlobalState, getGlobalState } = createGlobalState({
-    maxRender:4,
-    user:'yossi',
+    maxRender:5,
 });
 
 

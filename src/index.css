@@ -58,18 +58,24 @@ p{
 }
 
 /* Create Ball Circle */
-.circle{
+.circleRed{
   width:50px;
   height:50px;
   margin:10px;
   border-radius:50%;
-  background-color:rgb(70, 151, 70);
+  background-color:rgb(217, 16, 26);
 }
 
 
 
 
-
+.circleGreen{
+  width:50px;
+  height:50px;
+  margin:10px;
+  border-radius:50%;
+  background-color:rgb(29, 220, 90);
+}
 
 
 

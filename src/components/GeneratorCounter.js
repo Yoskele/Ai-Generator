@@ -1,34 +1,29 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { getGlobalState, setGlobalState, useGlobalState } from "../globalState/GlobalState";
-
+import { getGlobalState } from "../globalState/GlobalState";
 
 const GeneratorCounter = () => {
+    const renderGreenCircles = getGlobalState('maxRender');
+    let greenList, redList;
+    let totalRenders = 5;
+    if( renderGreenCircles === 0 ){
+        try{
+            document.getElementById('userInputFormText').remove();
+        }catch(error){
 
-    
-
-
-    const numbers = [1, 2, 3, 4, 5];
-    const listItems = numbers.map((number) =>
-        <li className="circle" key={number}></li>
-    );
-
-    const ChangeState = () => {
-        console.log('Changed the state. render. ')
-        console.log('Done...');
+        }
     }
-    
-    const changeColor = () => {
-        console.log('Chaning Color...')
-        let container = document.getElementById('circleContainer');
-        console.log('container ', container)
+    // How many Redcircles to Render
+    let redcircle = totalRenders - renderGreenCircles;
+    try{
+        redList = [...Array(redcircle)].map((x, id) =>{
+            return <li className="circleRed"  key={id}></li>
+        })
+        greenList = [...Array(renderGreenCircles)].map((x, i) =>{
+            return <li className="circleGreen"  key={i}></li>
+        })
+        
+    } catch(error){
     }
-
-
-    useEffect(() => {
-
-    },[])
-
     return(
         <div className=" p-4 w-50 mx-auto">
             <p>Left to generate</p>
@@ -39,7 +34,7 @@ const GeneratorCounter = () => {
                     listStyleType:'none',
                 }}
             >
-               {listItems}
+               {greenList}{redList}
             </ul>
         </div>
     )

@@ -3,21 +3,14 @@ import { useState } from 'react'
 import { getGlobalState, setGlobalState, useGlobalState } from "../globalState/GlobalState";
 import GeneratorCounter from './GeneratorCounter'
 
-
-
-
 const GenerateImage = () => {
-
     const [ userInput, setUserInput ] = useState('')
     const [ loading, setLoading ] = useState({show:false, msg:''})
     const [ alert, setAlert ] = useState({show:false, msg:''})
     const [ imageRender, setImageRender ] = useState(false);
-    
-    console.log('userInput ', userInput)
 
     const HandleForm = (event) => {
         event.preventDefault();
-        console.log('Handle Form userInput ', userInput)
         if(userInput !== ''){
             // setLoading({show:true, msg:'Creating art...'});
             // Art Created 100%. Reduce on hit from maxRender.
@@ -27,12 +20,11 @@ const GenerateImage = () => {
                 setImageRender(true);
 
             }else if(render => 4 && render > 0){
-                console.log('If left of renders ', render)
-                let xxx = render - 1;
-                setGlobalState('maxRender', xxx)
-                setLoading({show:true, msg:`Creating: ${userInput}`});
+                let rendersLeft = render - 1;
+                setGlobalState('maxRender', rendersLeft)
+                //setLoading({show:true, msg:`Creating: ${userInput}`});
                 setUserInput('');
-                setImageRender(true);
+                //setImageRender(true);
             }
         }else{
             setAlert({show:true, msg:'Empty Input..'})
@@ -43,8 +35,6 @@ const GenerateImage = () => {
         setAlert({show:false, msg:''})
         setUserInput(e)
     }
-
-
 
     return(
         <div className='mt-5'>
@@ -101,6 +91,7 @@ const GenerateImage = () => {
                         { !imageRender ? 
                             <button
                                 className='mt-4 btn'
+                                id="image-button-generator"
                                 style={{
                                     backgroundColor:'#D6517D',
                                     borderRadius:"5px",
@@ -121,7 +112,5 @@ const GenerateImage = () => {
         </div>
     )
 }
-
-
 
 export default GenerateImage;

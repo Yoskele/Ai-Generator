@@ -16,7 +16,7 @@ function App() {
       <Header />
       <GenerateText />
       <GenerateImage />
-      
+      <br></br><br></br>
     </div>
   );
 }
