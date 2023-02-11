@@ -4,6 +4,8 @@ import Header from './components/Header';
 import GenerateText from './components/GenerateText';
 import GenerateImage from './components/GenerateImage';
 import Message from './components/messages/Message';
+import  {getGlobalState, useGlobalState} from './globalState/GlobalState'
+
 function App() {
   const message = false;
 
@@ -14,6 +16,7 @@ function App() {
       <Header />
       <GenerateText />
       <GenerateImage />
+      
     </div>
   );
 }

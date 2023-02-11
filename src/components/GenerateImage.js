@@ -1,16 +1,70 @@
 import React from 'react'
+import { useState } from 'react'
+import { getGlobalState, setGlobalState, useGlobalState } from "../globalState/GlobalState";
+import GeneratorCounter from './GeneratorCounter'
+
 
 
 
 const GenerateImage = () => {
 
+    const [ userInput, setUserInput ] = useState('')
+    const [ loading, setLoading ] = useState({show:false, msg:''})
+    const [ alert, setAlert ] = useState({show:false, msg:''})
+    const [ imageRender, setImageRender ] = useState(false);
+    
+    console.log('userInput ', userInput)
+
+    const HandleForm = (event) => {
+        event.preventDefault();
+        console.log('Handle Form userInput ', userInput)
+        if(userInput !== ''){
+            // setLoading({show:true, msg:'Creating art...'});
+            // Art Created 100%. Reduce on hit from maxRender.
+            const render = getGlobalState('maxRender');
+            if(render < 0){
+            // Remove Render Button from page when user have no more renders.
+                setImageRender(true);
+
+            }else if(render => 4 && render > 0){
+                console.log('If left of renders ', render)
+                let xxx = render - 1;
+                setGlobalState('maxRender', xxx)
+                setLoading({show:true, msg:`Creating: ${userInput}`});
+                setUserInput('');
+                setImageRender(true);
+            }
+        }else{
+            setAlert({show:true, msg:'Empty Input..'})
+        }
+    }
+
+    const keyboardTyping = (e) => {
+        setAlert({show:false, msg:''})
+        setUserInput(e)
+    }
+
+
 
     return(
         <div className='mt-5'>
-           <h2 className='text-gradient-pink-italic text-center'>Generate Image</h2>
-
+            <p className='text-center mb-0'>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                <br></br>
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+            </p>
+           <h2 className='text-gradient-pink-italic text-center mb-4'>Generate Image</h2>
+           <GeneratorCounter />
+           { alert.show ? <p className='text-center'> { alert.msg } </p> : null }
+           { loading.show ? 
+                    <div className="m-4 d-flex flex-column justify-content-center align-items-center">
+                        <div className="lds-dual-ring scale-50"></div>
+                        <p className="text-lg text-white">{ loading.msg }</p>
+                    </div> 
+                    : null 
+                }
            <div 
-                className="w-50 mx-auto m-5 p-3"
+                className="w-50 mx-auto p-3"
                 style={{ 
                     
                     backgroundColor:'rgb(33,33,46, 0.9)',
@@ -18,37 +72,51 @@ const GenerateImage = () => {
                     borderRadius:'20px',
                 }}
             >
-                <div>
+                <form 
+                    onSubmit={HandleForm}
+                    className="d-flex flex-column justify-content-center align-items-center"
+                    id="userInputFormText"
+                >
                     <input 
                         id="inputGenerateImage"
                         type="text" 
-                        className='w-100 rounded p-2'
+                        className='w-100 rounded mt-2 p-2'
                         placeholder='Whats in your mind?'
+                        value={userInput}
+                        onChange={(e) => { keyboardTyping(e.target.value) }}
                         style={{
-                            backgroundColor:'gray',
+                            backgroundColor:'#151c25',
                             color:'lime',
                             fontStyle:'italic',
                             fontWeight:'bold',
                             letterSpacing:'3px',
                         }}
                     />
-                    <div className='d-flex justify-content-center'>
-                        <button
-                            className='mt-3'
-                            style={{
-                                backgroundColor:'#D6517D',
-                                borderRadius:"5px",
-                                boxShadow: "0px 2px 2px 1px #0F0F0F",
-                                color:"white",
-                                cursor:"pointer",
-                                fontFamily:"inherit",
-                                padding:"5px",
-                            }}
-                        > 
-                            Generate 
-                        </button>
+                    <div 
+                        className=''
+                        style={{
+                            height:'55px',
+                        }}
+                    > 
+                        { !imageRender ? 
+                            <button
+                                className='mt-4 btn'
+                                style={{
+                                    backgroundColor:'#D6517D',
+                                    borderRadius:"5px",
+                                    color:"white",
+                                    fontFamily:"inherit",
+                                    padding:"5px",
+                                    width:'100px',
+                                }}
+                            > 
+                                Generate 
+                            </button> 
+                            : 
+                            null
+                        }
                     </div>
-                </div>
+                </form>
            </div>
         </div>
     )
