@@ -5,7 +5,6 @@ const GenerateText = () => {
 
     return(
         <div className=''>
-            <p className='text-center'> GenerateText </p>
             <div className='textInputWritter' style={{color:'green'}}>
                 <div className='text-center'>
                     <TypeAnimation
@@ -16,7 +15,7 @@ const GenerateText = () => {
                                 2000,
  
                             () => {
-                            // console.log('Done typing!'); // Place optional callbacks anywhere in the array
+                                console.log('Done typing!'); // Place optional callbacks anywhere in the array
                             }
                         ]}
                         wrapper="div"
@@ -26,7 +25,8 @@ const GenerateText = () => {
                     />
                 </div>
             </div>
-            <div
+            <button
+                id="textGeneratorSubmitButton"
                 className='mt-4 btn d-block mx-auto'
                 style={{
                     backgroundColor:'#D6517D',
@@ -38,7 +38,7 @@ const GenerateText = () => {
                 }}
             > 
                 Generate 
-            </div>
+            </button>
         </div>
         
     )
