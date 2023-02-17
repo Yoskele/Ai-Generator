@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Configuration, OpenAIApi } from "openai";
-import { getGlobalState, setGlobalState, useGlobalState } from "../globalState/GlobalState";
+import { getGlobalState, setGlobalState } from "../globalState/GlobalState";
 import GeneratorCounter from './GeneratorCounter'
+import Loading from './messages/Loading';
 
 const GenerateImage = () => {
 
@@ -22,10 +23,19 @@ const GenerateImage = () => {
           n: 1,
           size: '256x256',
         };
-        const response = await openai.createImage(imageParameters);
-        const urlData = response.data.data[0].url;
-        setImageUrl(urlData);
-        setLoading({show:false, msg:``});
+        try{
+            const response = await openai.createImage(imageParameters);
+            console.log(response)
+            const urlData = response.data.data[0].url;
+            setImageUrl(urlData);
+            setLoading({show:true, msg: userInput});
+        }catch(error){
+            setLoading({show:true, msg:'Something went wrong please try again later.'});
+            setTimeout(function(){
+                setLoading({show:false, msg:error});
+            }, 6000);
+        }
+        
     };
 
     const HandleForm = (event) => {
@@ -49,26 +59,15 @@ const GenerateImage = () => {
     }
 
     return(
-        <div className='mt-5'>
-            <p className='text-center mb-0'>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                <br></br>
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-            </p>
-           <h2 className='text-gradient-pink-italic text-center mb-4'>Generate Image</h2>
-           <div className='container d-flex justify-content-center'>
-                <img src={imageUrl} alt="Ai-image" />
-           </div>
+        <div className='mt-5' id="AIGenerator">
            <GeneratorCounter />
            { alert.show ? <p className='text-center'> { alert.msg } </p> : null }
            { loading.show ? 
-                    <div className="m-4 d-flex flex-column justify-content-center align-items-center">
-                        <div className="lds-dual-ring scale-50"></div>
-                        <br></br>
-                        <p className="text-lg text-white">{ loading.msg }</p>
-                    </div> 
-                    : null 
-                }
+                <Loading message={loading.msg} />
+                :  <div className='container mt-2 mb-2 d-flex justify-content-center'>
+                        <img src={imageUrl} alt="Ai-image" onError={i => i.target.style.display='none'} />
+                    </div>  
+            }
            <div 
                 className="w-50 mx-auto p-3 spaceBackground"
                 style={{ 

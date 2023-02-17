@@ -4,7 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 const GenerateText = () => {
 
     return(
-        <div className=''>
+        <div className='container'>
             <div className='textInputWritter' style={{color:'green'}}>
                 <div className='text-center'>
                     <TypeAnimation

@@ -1,8 +1,11 @@
 import React from 'react'
+import catSpace from '../images/catSpace.png';
+import catSpace2 from '../images/catSpace2.png';
+
 
 function Header() {
   return (
-    <div>
+    <div className=''>
         <div className='container mt-4 p-4'>
                 <h1 className='text-gradient-pink-italic text-center'>AI Image Genereator </h1>
                 <p className='text-center'>
@@ -15,16 +18,16 @@ function Header() {
                         d-flex
                         flex-wrap
                         justify-content-around
-                        mx-auto    
+                        mx-auto
+                        mt-4   
                     '
                     style={{
                         maxWidth:'750px',
-                        height:'120px',
+                        
                     }}
                 >
                     <div 
                         className='
-                        border border-danger
                         d-flex
                         flex-column
                         justify-content-center
@@ -34,14 +37,15 @@ function Header() {
                         align="center"
                         style={{
                             minWidth:'200px',
+                            maxWidth:'250px',
+                            maxHeight:'300px',
                             borderRadius:'20px',
                         }}
                     >
-                        <img alt="No Image" />
+                        <img src={catSpace} className="rounded" alt="No Image" />
                     </div>
                     <div 
                         className='
-                        border border-danger
                         d-flex
                         flex-column
                         justify-content-center
@@ -51,14 +55,15 @@ function Header() {
                         align="center"
                         style={{
                             minWidth:'200px',
+                            maxWidth:'250px',
+                            maxHeight:'300px',
                             borderRadius:'20px',
                         }}
                     >
-                        <img alt="No Image" />
+                        <img className="rounded" alt="No Image" />
                     </div>
                     <div 
                         className='
-                        border border-danger
                         d-flex
                         flex-column
                         justify-content-center
@@ -68,10 +73,12 @@ function Header() {
                         align="center"
                         style={{
                             minWidth:'200px',
+                            maxWidth:'250px',
+                            maxHeight:'300px',
                             borderRadius:'20px',
                         }}
                     >
-                        <img alt="No Image" />
+                        <img src={catSpace2} className="rounded" alt="No Image" />
                     </div>
                 </div>
             </div>

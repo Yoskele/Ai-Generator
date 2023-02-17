@@ -59,8 +59,8 @@ p{
 
 /* Create Ball Circle */
 .circleRed{
-  width:50px;
-  height:50px;
+  width:25px;
+  height:25px;
   margin:10px;
   border-radius:50%;
   background-color:rgb(217, 16, 26);
@@ -70,8 +70,8 @@ p{
 
 
 .circleGreen{
-  width:50px;
-  height:50px;
+  width:25px;
+  height:25px;
   margin:10px;
   border-radius:50%;
   background-color:rgb(29, 220, 90);

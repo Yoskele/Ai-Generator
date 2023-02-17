@@ -25,7 +25,11 @@ const GeneratorCounter = () => {
     } catch(error){
     }
     return(
-        <div className=" p-4 w-50 mx-auto">
+        <div
+            style={{
+                width:'350px'
+            }} 
+            className="p-4 container">
             <p>Left to generate</p>
             <ul 
                 id="circleContainer"
