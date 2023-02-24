@@ -34,8 +34,11 @@ const GenerateImage = () => {
             setTimeout(function(){
                 setLoading({show:false, msg:error});
             }, 6000);
+            return;
         }
-        
+        const render = getGlobalState('maxRender');
+        let rendersLeft = render - 1;
+        setGlobalState('maxRender', rendersLeft)
     };
 
     const HandleForm = (event) => {
@@ -47,8 +50,7 @@ const GenerateImage = () => {
             // Remove Render Button from page when user have no more renders.
                 setImageRender(true);
             }else if(render => 4 && render > 0){
-                let rendersLeft = render - 1;
-                setGlobalState('maxRender', rendersLeft)
+                
                 setLoading({show:true, msg:`Creating: ${userInput}`});
                 generateImage();
                 setUserInput('');

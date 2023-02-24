@@ -15,6 +15,9 @@ p{
   color:var(--link_color)
 }
 
+h3{
+  color:var(--link_color)
+}
 
 #inputGenerateImage::placeholder {
   color: #EC4899;
