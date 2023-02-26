@@ -1,17 +1,60 @@
 import React from 'react'
+import GenerateText from '../components/GenerateText';
 import catSpace from '../images/catSpace.png';
 import catSpace2 from '../images/catSpace2.png';
 
 
 function Header() {
   return (
-    <div className=''>
-        <div className='container mt-4 p-4'>
+    <div className='container-fluid'
+        style={{height:'90vh'}}
+    >
+        <div className='row'>
+            <div 
+                style={{height:'90vh'}}
+                className='col-sm-6 d-flex flex-column justify-content-around'>
+                <h1 className='text-gradient-pink-italic text-center'>AI Image Genereator<br></br>FROM TEXT</h1>
+                <GenerateText />
+                <div className=''>
+                    <div className='d-flex justify-content-around'>
+                        <button
+                            id="textGeneratorSubmitButton"
+                            className='btn d-block mx-auto'
+                            style={{
+                                backgroundColor:'#D6517D',
+                                borderRadius:"5px",
+                                color:"white",
+                                fontFamily:"inherit",
+                                padding:"5px",
+                                width:'100px',
+                            }}
+                        > 
+                            Telegram 
+                        </button>
+                        <h4 className="title-gradient-white-color"> Join our Community </h4>
+                        <button
+                            id="textGeneratorSubmitButton"
+                            className='btn d-block mx-auto'
+                            style={{
+                                backgroundColor:'#D6517D',
+                                borderRadius:"5px",
+                                color:"white",
+                                fontFamily:"inherit",
+                                padding:"5px",
+                                width:'100px',
+                            }}
+                        > 
+                            Discord 
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div 
+                style={{height:'90vh'}}
+                className='container p-4 col-sm-6'>
                 <h1 className='text-gradient-pink-italic text-center'>AI Image Genereator </h1>
                 <p className='text-center'>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    <br></br>
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                    The machine creates images and mint NFTs from text by the power of artificial intelleigence.
                 </p>
                 <div 
                     className='
@@ -82,34 +125,7 @@ function Header() {
                     </div>
                 </div>
             </div>
-            {/* <div className='
-                border border-danger
-                d-flex
-                flex-wrap
-            '>
-            <div 
-                className='
-                border border-success
-                flex-fill'
-                style={{
-
-                    minWidth:'450px',
-                }}
-            >
-                
-            </div>
-            <div
-                className='
-                border border-primary
-                flex-fill'
-                style={{
-                    minWidth:'750px',
-                }}
-
-            >
-                <h3> Use Your Imagination </h3>
-            </div>
-        </div> */}
+        </div>
     </div>
 
   )

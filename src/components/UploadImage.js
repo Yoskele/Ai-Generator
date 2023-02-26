@@ -3,14 +3,14 @@ import React, {useState} from 'react';
 import "../styleFolder/ImageUpload.css";
 
 const UploadImage = () => {
-    const [ selectedImages , setSelectedImages ] = useState([]);
-
-    const onSelectFile = (event) => {
+      const [ selectedImages , setSelectedImages ] = useState([]);
+      const onSelectFile = (event) => {
         // Grab all the files from the input.
         const selectedFiles = event.target.files;
         // Convert the files into array.
         const selectedFilesArray = Array.from(selectedFiles);
         // Store each mage into imagesArray.
+        // only if its less than 10 files.
         const imagesArray = selectedFilesArray.map((file) => {
           return URL.createObjectURL(file);
         });
@@ -19,33 +19,37 @@ const UploadImage = () => {
         setSelectedImages((previousImages) => previousImages.concat(imagesArray));
         // FOR BUG IN CHROME
         event.target.value = "";
-    };
+      };
     
-    function deleteHandler(image) {
+      const deleteHandler = (image) => {
         // Filter out the Deleted Image from the Array and it will update by it self.
         setSelectedImages(selectedImages.filter((e) => e !== image));
         URL.revokeObjectURL(image);
-    }
+      }
     
   return (
     <section>
-      <label>
-        <p> + Add Images </p>
-        <p>up to 10 images</p>
-        <input
-          type="file"
-          name="images"
-          onChange={onSelectFile}
-          multiple
-          accept="image/png , image/jpeg, image/webp"
-        />
-      </label>
+      {selectedImages.length < 10 ? 
+        <label id="uploadImageLabel">
+          <p> + Add Images </p>
+          <p>up to 10 images</p>
+          <input
+              id="uploadImageInput"
+              type="file"
+              name="images"
+              onChange={onSelectFile}
+              multiple
+              accept="image/png , image/jpeg, image/webp"
+          />
+        </label>
+      :null}
+      
       <br />
       <div className="images d-flex flex-wrap justify-content-center">
         { selectedImages.map((image, index) => {
             return (
               <div key={image} 
-                className="imageContainerUpload container d-flex flex-column align-items-center justify-content-center"
+                className="imageContainerUpload m-3 p-3 container d-flex flex-column align-items-center justify-content-center"
                 style={{width:'340px', height:'100%'}}
             >
                 <img src={image} height="200" width="200" alt="upload"/>

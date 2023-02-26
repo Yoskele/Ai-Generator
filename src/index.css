@@ -3,18 +3,29 @@
   --link_color:#EC4899;
 }
 [data-theme="dark"]{
-  --body_background:#fafafa;
+  --body_background:#FDF4DC;
   --link_color:black;
 }
 
 *{
   transition: all 0.3s ease-in-out;
 }
-
+.title-gradient-white-color{
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.title-gradient-pink-color{
+  background: -webkit-linear-gradient(#eee, #d6659e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 p{
   color:var(--link_color)
 }
-
+h1{
+  color:var(--link_color)
+}
 h3{
   color:var(--link_color)
 }
@@ -31,7 +42,6 @@ h3{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 /* For loading circle */
 .lds-dual-ring {
   display: inline-block;
@@ -69,9 +79,6 @@ h3{
   background-color:rgb(217, 16, 26);
 }
 
-
-
-
 .circleGreen{
   width:25px;
   height:25px;
@@ -81,22 +88,15 @@ h3{
 }
 
 
-
-
-
-
-
-
-
-:GoodCOLORS {
-	--dark: #282c34  ;
-	--darker: #1F2937;
-	--darkest: #111827;
-	--grey: #6B7280;
-	--pink: #EC4899;
-	--purple: #8B5CF6;
-	--light: #EEE;
+/* For Hover on the About Us Section. Gives a green light. */
+.greenHoverNeon:hover {
+  box-shadow: rgba(83, 218, 97, 0.1) 0px 10px 15px -3px,
+    rgba(225, 221, 221, 0.05) 0px 4px 6px -2px;
 }
+
+
+
+
 
 
 

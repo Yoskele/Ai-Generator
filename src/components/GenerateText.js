@@ -1,8 +1,6 @@
 import { TypeAnimation } from 'react-type-animation';
 
-
 const GenerateText = () => {
-
     return(
         <div className='container'>
             <div className='textInputWritter' style={{color:'green'}}>
@@ -25,7 +23,7 @@ const GenerateText = () => {
                     />
                 </div>
             </div>
-            <button
+            {/* <button
                 id="textGeneratorSubmitButton"
                 className='mt-4 btn d-block mx-auto'
                 style={{
@@ -38,7 +36,7 @@ const GenerateText = () => {
                 }}
             > 
                 Generate 
-            </button>
+            </button> */}
         </div>
         
     )

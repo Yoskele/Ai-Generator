@@ -33,7 +33,7 @@ const GenerateImage = () => {
             setLoading({show:true, msg:'Something went wrong please try again later.'});
             setTimeout(function(){
                 setLoading({show:false, msg:error});
-            }, 6000);
+            }, 5000);
             return;
         }
         const render = getGlobalState('maxRender');
@@ -62,14 +62,18 @@ const GenerateImage = () => {
 
     return(
         <div className='mt-5' id="AIGenerator">
-           <GeneratorCounter />
+           
            { alert.show ? <p className='text-center'> { alert.msg } </p> : null }
-           { loading.show ? 
-                <Loading message={loading.msg} />
-                :  <div className='container mt-2 mb-2 d-flex justify-content-center'>
-                        <img src={imageUrl} alt="Ai-image" onError={i => i.target.style.display='none'} />
-                    </div>  
-            }
+           <div 
+            style={{minHeight:'120px'}} 
+            className=''>
+            { loading.show ? 
+                    <Loading message={loading.msg} />
+                    :  <div className='container mt-2 mb-2 d-flex justify-content-center'>
+                            <img src={imageUrl} alt="Ai-image" onError={i => i.target.style.display='none'} />
+                        </div>  
+                }
+           </div>
            <div 
                 className="w-50 mx-auto p-3 spaceBackground"
                 style={{ 
@@ -125,6 +129,7 @@ const GenerateImage = () => {
                     </div>
                 </form>
            </div>
+           <GeneratorCounter />
         </div>
     )
 }

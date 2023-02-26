@@ -30,7 +30,7 @@ const GeneratorCounter = () => {
                 width:'350px'
             }} 
             className="p-4 container">
-            <p>Left to generate</p>
+                <p className="text-center title-gradient-white-color">Left to generate</p>
             <ul 
                 id="circleContainer"
                 className="d-flex justify-content-around"
