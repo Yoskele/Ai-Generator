@@ -19,7 +19,7 @@ const AboutUs = () => {
         <br/>
         <div className='row'>
             <div 
-                className='col-sm-6 p-3'>
+                className='col-sm-6 p-3 d-flex flex-column justify-content-center'>
                 <CarouselImageDisplayer />
             </div>
             <div 
