@@ -19,35 +19,48 @@ const Navbar = () => {
         <ThemeColorButton />
 
         {connectedAccount ? (
-          <button
-                className=''
-                
+          <div
+                className='title-gradient-pink-color text-center'
                 style={{
-                    backgroundColor:'#D6517D',
-                    borderRadius:"5px",
-                    color:"white",
+                    fontSize:'1.05rem',
                     fontFamily:"inherit",
-                    padding:"5px",
-                    width:'100px',
-                }}
-            > 
-                Logged in 
-            </button> 
-          ) : (
-            <button
-                className=''
-                style={{
-                    backgroundColor:'#D6517D',
-                    borderRadius:"5px",
-                    color:"white",
-                    fontFamily:"inherit",
+                    fontStyle:'italic',
+                    fontWeight:'bold',
                     padding:"5px",
                     width:'150px',
+                    cursor:'pointer',
+                }}
+            > 
+            <p
+                style={{
+                    borderBottom:'1px solid gray',
+                }}
+            >
+                Logged in
+            </p> 
+      </div> 
+          ) : (
+            <div
+                className='title-gradient-white-color text-center'
+                style={{
+                    fontSize:'1.05rem',
+                    fontFamily:"inherit",
+                    fontStyle:'italic',
+                    fontWeight:'bold',
+                    padding:"5px",
+                    width:'150px',
+                    cursor:'pointer',
                 }}
                 onClick={connectWallet}
             > 
-                Connect Wallet 
-            </button> 
+                <p
+                    style={{
+                        borderBottom:'1px solid gray',
+                    }}
+                >
+                    Connect Wallet
+                </p> 
+            </div> 
         )}
         
         <h3 className=''> Ai Generator </h3>

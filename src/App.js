@@ -36,34 +36,33 @@ function App() {
       </div>
       <div className='container mt-5 mb-5 w-50 d-flex justify-content-around'>
         <p 
-          onClick={() => {setAiGenerator(true)}}
+          onClick={() => {setAiGenerator(false)}}
           className='btn title-gradient-white-color'
           >
             Generate Ai
         </p>
         <p 
-          onClick={() => {setAiGenerator(false)}}
+          onClick={() => {setAiGenerator(true)}}
           className='btn title-gradient-white-color'
           >
             Upload image from device
         </p>
       </div>
       <div className=''>
-        { aiGenerator ? 
+        { !aiGenerator ? 
           <div className='container-fluid'>
             <div className='row'>
               <div className='col-sm-6 p-4 d-flex flex-column justify-content-around'>
                 <h4 className='title-gradient-pink-color text-center'>How to use AI Generator</h4>
                 <ul className='text-center'>
-                  <h6 className='title-gradient-white-color mt-1'>Connect Your Wallet To Generate An AI Image</h6>
-                  <h6 className='title-gradient-white-color mt-1'>One Wallet Has 3 Free Generation Per day</h6>
-                  <h6 className='title-gradient-white-color mt-1'>A User Can Get More Generator By Buying the XX Token</h6>
+                  <h6 className='title-gradient-white-color mt-3'>Connect Your Wallet To Generate An AI Image</h6>
+                  <h6 className='title-gradient-white-color mt-3'>One Wallet Has 3 Free Generation Per day</h6>
+                  <h6 className='title-gradient-white-color mt-3'>A User Can Get More Generator By Buying the XX Token</h6>
                   
                 </ul>
                 <div className='container w-75'>
                   <p className='text-center'>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   </p>
                 </div>
               </div>

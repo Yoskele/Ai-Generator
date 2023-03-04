@@ -16,9 +16,15 @@ const Footer = () => {
                         placeholder='Email address'/>
                     <div
                         style={{cursor:'pointer'}} 
-                        className='text-white m-4'
+                        className='title-gradient-pink-color m-4'
                     >
-                        Subscribe
+                        <p
+                            style={{
+                                borderBottom:'1px solid gray',
+                            }}
+                        >
+                            Subscribe
+                        </p>
                     </div>
                 </div>
             </div>
