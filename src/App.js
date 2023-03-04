@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar.js';
 import Header from './components/Header';
@@ -6,6 +6,11 @@ import GenerateImage from './components/GenerateImage';
 import UploadImage from './components/UploadImage';
 import Message from './components/messages/Message';
 import AboutUs from './components/AboutUs';
+import Footer from './components/Footer';
+import { connectWallet } from './components/web3/FunctionsWeb3';
+import { useGlobalState, getGlobalState } from './globalState/GlobalState';
+
+
 
 
 function App() {
@@ -13,53 +18,64 @@ function App() {
   const [aiGenerator, setAiGenerator ] = useState(false);
   const [uploadImage, setUploadImage ] = useState(false);
 
+
+
+
   return (
     <div className="App">
       { message ? <Message /> : null } 
       <Navbar />
       <Header />
+      <AboutUs />
       <div className='container-fluid mt-5'>
-        <div className='row'>
-          <div className='col-sm-6'>
-            <h3 className='title-gradient-white-color text-center'> AI Image Genereator </h3>
-            <GenerateImage />
-          </div>
-          <div className='col-sm-6'>
-            <h3 className='title-gradient-white-color text-center'> Upload your own image </h3>
-            <div
-              style={{minHeight:'400px'}} 
-              className='d-flex flex-column justify-content-center '>
-              <UploadImage />
-            </div>
+        <div className=''>
+          <div className='text-center'>
+            <h3 className='title-gradient-pink-color text-center m-0'>Which Image Would You Like To Mint?</h3>
           </div>
         </div>
       </div>
-      <AboutUs />
-
-      {/* <div className='container mt-5 mb-5 w-50 d-flex justify-content-around'>
-        <div 
+      <div className='container mt-5 mb-5 w-50 d-flex justify-content-around'>
+        <p 
           onClick={() => {setAiGenerator(true)}}
-          className='btn text-white'
+          className='btn title-gradient-white-color'
           >
             Generate Ai
-        </div>
-        <div 
+        </p>
+        <p 
           onClick={() => {setAiGenerator(false)}}
-          className='btn text-white'
+          className='btn title-gradient-white-color'
           >
             Upload image from device
-        </div>
+        </p>
       </div>
-      <div className='border'>
-        { aiGenerator ? <GenerateImage /> : <UploadImage /> }
+      <div className=''>
+        { aiGenerator ? 
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-sm-6 p-4 d-flex flex-column justify-content-around'>
+                <h4 className='title-gradient-pink-color text-center'>How to use AI Generator</h4>
+                <ul className='text-center'>
+                  <h6 className='title-gradient-white-color mt-1'>Connect Your Wallet To Generate An AI Image</h6>
+                  <h6 className='title-gradient-white-color mt-1'>One Wallet Has 3 Free Generation Per day</h6>
+                  <h6 className='title-gradient-white-color mt-1'>A User Can Get More Generator By Buying the XX Token</h6>
+                  
+                </ul>
+                <div className='container w-75'>
+                  <p className='text-center'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                </div>
+              </div>
+              <div className='col-sm-6'>
+                <GenerateImage />
+              </div>
+            </div>
+          </div>
+        : <UploadImage /> }
       </div>
-       */}
-      
+      <Footer />
 
-
-
-      
-      <br></br><br></br>
     </div>
   );
 }

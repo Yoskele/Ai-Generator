@@ -52,10 +52,6 @@ function Header() {
             <div 
                 style={{height:'90vh'}}
                 className='container p-4 col-sm-6'>
-                <h1 className='text-gradient-pink-italic text-center'>AI Image Genereator </h1>
-                <p className='text-center'>
-                    The machine creates images and mint NFTs from text by the power of artificial intelleigence.
-                </p>
                 <div 
                     className='
                         d-flex
@@ -103,7 +99,7 @@ function Header() {
                             borderRadius:'20px',
                         }}
                     >
-                        <img className="rounded" alt="No Image" />
+                        <img src={catSpace} className="rounded" alt="No Image" />
                     </div>
                     <div 
                         className='

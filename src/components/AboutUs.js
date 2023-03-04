@@ -4,7 +4,7 @@ import CarouselImageDisplayer from './CarouselImageDisplayer'
 
 const AboutUs = () => {
   return (
-    <div className='p-3'>
+    <div className='p-3 slideShowBackGroundImage' style={{borderBottom:'1px dotted gray'}}>
         <div 
             style={{borderBottom:'1px dotted gray'}}
             className='d-flex flex-column align-items-center text-center'>
@@ -17,7 +17,7 @@ const AboutUs = () => {
             <br/>
         </div>
         <br/>
-        <div className='row'>
+        <div className='row  '>
             <div 
                 className='col-sm-6 p-3 d-flex flex-column justify-content-center'>
                 <CarouselImageDisplayer />

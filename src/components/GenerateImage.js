@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { Configuration, OpenAIApi } from "openai";
-import { getGlobalState, setGlobalState } from "../globalState/GlobalState";
-import GeneratorCounter from './GeneratorCounter'
+import { getGlobalState, setGlobalState, useGlobalState } from "../globalState/GlobalState";
 import Loading from './messages/Loading';
+import { connectWallet } from './web3/FunctionsWeb3'
+
 
 const GenerateImage = () => {
+
+    const [connectedAccount] = useGlobalState('connectedAccount')
+    console.log('connectedAccount ', connectedAccount)
 
     const configuration = new Configuration({
         apiKey: process.env.REACT_APP_API_KEY,
@@ -61,13 +65,13 @@ const GenerateImage = () => {
     }
 
     return(
-        <div className='mt-5' id="AIGenerator">
-           
+        <div className=''>
+           {/* <GeneratorCounter /> */}
            { alert.show ? <p className='text-center'> { alert.msg } </p> : null }
            <div 
-            style={{minHeight:'120px'}} 
-            className=''>
-            { loading.show ? 
+                style={{minHeight:'120px'}} 
+                className=''>
+                { loading.show ? 
                     <Loading message={loading.msg} />
                     :  <div className='container mt-2 mb-2 d-flex justify-content-center'>
                             <img src={imageUrl} alt="Ai-image" onError={i => i.target.style.display='none'} />
@@ -77,7 +81,6 @@ const GenerateImage = () => {
            <div 
                 className="w-50 mx-auto p-3 spaceBackground"
                 style={{ 
-                    backgroundColor:'rgb(33,33,46, 0.9)',
                     boxShadow: '0 0 5px #e32970',
                     borderRadius:'20px',
                 }}
@@ -108,28 +111,43 @@ const GenerateImage = () => {
                             height:'55px',
                         }}
                     > 
-                        { !imageRender ? 
-                            <button
-                                className='mt-4 btn'
-                                id="image-button-generator"
-                                style={{
-                                    backgroundColor:'#D6517D',
-                                    borderRadius:"5px",
-                                    color:"white",
-                                    fontFamily:"inherit",
-                                    padding:"5px",
-                                    width:'100px',
-                                }}
-                            > 
-                                Generate 
-                            </button> 
-                            : 
-                            null
-                        }
+                        { connectedAccount ? 
+                            !imageRender ? 
+                                <button
+                                    className='mt-4 btn'
+                                    id="image-button-generator"
+                                    style={{
+                                        backgroundColor:'#D6517D',
+                                        borderRadius:"5px",
+                                        color:"white",
+                                        fontFamily:"inherit",
+                                        padding:"5px",
+                                        width:'100px',
+                                    }}
+                                > 
+                                    Generate 
+                                </button> 
+                                : 
+                                null: 
+                                    <button
+                                        className='mt-4 btn'
+                                        id="image-button-generator"
+                                        style={{
+                                            backgroundColor:'#D6517D',
+                                            borderRadius:"5px",
+                                            color:"white",
+                                            fontFamily:"inherit",
+                                            padding:"5px",
+                                            width:'150px',
+                                        }}
+                                        onClick={connectWallet}
+                                    > 
+                                        Connect Wallet 
+                                    </button> 
+                            }
                     </div>
                 </form>
            </div>
-           <GeneratorCounter />
         </div>
     )
 }

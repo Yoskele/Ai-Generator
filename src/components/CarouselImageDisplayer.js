@@ -3,10 +3,13 @@ import Carousel from 'react-bootstrap/Carousel';
 import firstSlideShow from '../images/firstSlideShow.svg'
 import secondSlideShow from '../images/secondSlideShow.svg'
 import thirdSlideShow from '../images/thirdSlideShow.svg'
+import background from '../images/slideshowBackground.png'
 
 const CarouselImageDisplayer = () => {
   return (
-    <div className=''>
+    <div 
+      className=''
+    >
       <div className='container'>
         {/* Close the Automatic slideshow -> interval={null} */}
         <Carousel interval={null}>
