@@ -35,6 +35,7 @@ const Navbar = () => {
                 style={{
                     borderBottom:'1px solid gray',
                 }}
+                onClick={()=>setGlobalState('connectedAccount', '')}
             >
                 Logged in
             </p> 

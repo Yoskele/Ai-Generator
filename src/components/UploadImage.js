@@ -12,18 +12,19 @@ const UploadImage = () => {
 
   const [ selectedImages , setSelectedImages ] = useState([]);
   const onSelectFile = (event) => {
-    // Grab all the files from the input.
     const selectedFiles = event.target.files;
     // Convert the files into array.
     const selectedFilesArray = Array.from(selectedFiles);
     // Store each mage into imagesArray.
-    // only if its less than 10 files.
     const imagesArray = selectedFilesArray.map((file) => {
       return URL.createObjectURL(file);
     });
     // Update the state so we can render the new value.
     // concat add the new value to the previus value in the array.
-    setSelectedImages((previousImages) => previousImages.concat(imagesArray));
+    // Put a max cap on uploading files.
+    if(selectedImages.length < 3){
+      setSelectedImages((previousImages) => previousImages.concat(imagesArray.slice(0,3)));
+    }
     // FOR BUG IN CHROME
     event.target.value = "";
   };
@@ -35,7 +36,6 @@ const UploadImage = () => {
   }
 
   const toogleWindow = (index) => {
-    console.log('index ', index)
     var x = document.getElementById(`mintContainer-${index}`);
     if (x.style.display === "none") {
       x.style.display = "block";
@@ -46,10 +46,10 @@ const UploadImage = () => {
     
   return (
     <section>
-      {selectedImages.length < 10 ? 
+      {selectedImages.length < 3 ? 
         <label id="uploadImageLabel">
           <p> + Add Images </p>
-          <p>up to 10 images</p>
+          <p>up to 3 images</p>
           <input
               id="uploadImageInput"
               type="file"
@@ -66,7 +66,7 @@ const UploadImage = () => {
         { selectedImages.map((image, index) => {
             return (
               <div key={image} 
-                className="imageContainerUpload m-3 p-3 container d-flex flex-column align-items-center justify-content-center"
+                className="imageContainerUpload greenHoverNeon m-3 p-3 container d-flex flex-column align-items-center justify-content-center"
                 style={{width:'340px', height:'100%'}}
               >
                 <p>{index}</p>

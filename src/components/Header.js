@@ -2,6 +2,7 @@ import React from 'react'
 import GenerateText from '../components/GenerateText';
 import catSpace from '../images/catSpace.png';
 import catSpace2 from '../images/catSpace2.png';
+import gummiDuck from '../images/gummi-duck.png';
 
 
 function Header() {
@@ -81,7 +82,7 @@ function Header() {
                             borderRadius:'20px',
                         }}
                     >
-                        <img src={catSpace} className="rounded" alt="No Image" />
+                        <img src={gummiDuck} className="rounded" alt="No Image" />
                     </div>
                     <div 
                         className='
