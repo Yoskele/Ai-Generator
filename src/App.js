@@ -30,7 +30,7 @@ function App() {
       <div className='container-fluid mt-5'>
         <div className=''>
           <div className='text-center'>
-            <h3 className='title-gradient-pink-color text-center m-0'>Which Image Would You Like To Mint?</h3>
+            <h3 className='title-gradient-pink-color text-center m-0'>Which Way Would You Like To Mint Your Image?</h3>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ function App() {
           onClick={() => {setAiGenerator(false)}}
           className='btn title-gradient-white-color'
           >
-            Generate Ai
+            Generate With Ai
         </p>
         <p 
           onClick={() => {setAiGenerator(true)}}

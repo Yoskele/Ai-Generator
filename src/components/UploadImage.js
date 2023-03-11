@@ -1,8 +1,11 @@
 // Short cut rafce
 import React, {useState} from 'react';
 import "../styleFolder/ImageUpload.css";
+import { useGlobalState } from "../globalState/GlobalState";
+import { connectWallet } from './web3/FunctionsWeb3.js';
 
 const UploadImage = () => {
+  const [connectedAccount] = useGlobalState('connectedAccount')
   // To Mint the NFT
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
@@ -91,23 +94,28 @@ const UploadImage = () => {
                   id={`mintContainer-${index}`}
                   style={{display:'none'}}
                   className='text-white w-100'>
-                    <form 
-                      onSubmit={submitHandler}
-                      className='w-100'
-                    >
-                      <div className='mb-2 d-flex flex-column align-items-center'>
-                        <label>Name</label>
-                        <div className='mb-2 d-flex justify-content-between'>
-                          <input className="rounded" onChange={(e) => { setName(e.target.value) }} />
+                    {
+                      connectedAccount ? 
+                      <form 
+                        onSubmit={submitHandler}
+                        className='w-100'
+                      >
+                        <div className='mb-2 d-flex flex-column align-items-center'>
+                          <label>Name</label>
+                          <div className='mb-2 d-flex justify-content-between'>
+                            <input className="rounded" onChange={(e) => { setName(e.target.value) }} />
+                          </div>
+                          <label>Description</label>
+                          <div className='mb-2 d-flex justify-content-between'>
+                            <textarea  className="rounded"  onChange={(e) => setDescription(e.target.value)} />
+                          </div>
                         </div>
-                        <label>Description</label>
-                        <div className='mb-2 d-flex justify-content-between'>
-                          <textarea  className="rounded"  onChange={(e) => setDescription(e.target.value)} />
-                        </div>
-                      </div>
-                      <h3 onClick={() => submitHandler()} style={{cursor:'pointer'}} className='text-center borderBottomHover'>Mint</h3>
+                        <h3 onClick={() => submitHandler()} style={{cursor:'pointer'}} className='text-center borderBottomHover'>Mint</h3>
                     </form>
-                  </div>
+                    : 
+                    <h5 onClick={() => connectWallet()} style={{cursor:'pointer'}} className='text-center title-gradient-pink-color borderBottomHover'>Connect Wallet</h5>
+                  }
+                </div>
               </div>
             );
           })}

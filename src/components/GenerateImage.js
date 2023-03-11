@@ -3,7 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 import { getGlobalState, setGlobalState, useGlobalState } from "../globalState/GlobalState";
 import Loading from './messages/Loading';
 import { connectWallet } from './web3/FunctionsWeb3'
-
+import handplanetImage from '../images/handPlanet.png'
 
 const GenerateImage = () => {
 
@@ -68,7 +68,7 @@ const GenerateImage = () => {
         <div className=''>
            {/* <GeneratorCounter /> */}
            { alert.show ? <p className='text-center'> { alert.msg } </p> : null }
-           <div 
+            <div 
                 style={{minHeight:'120px'}} 
                 className=''>
                 { loading.show ? 
@@ -77,8 +77,16 @@ const GenerateImage = () => {
                             <img src={imageUrl} alt="Ai-image" onError={i => i.target.style.display='none'} />
                         </div>  
                 }
-           </div>
-           <div 
+                <div className='d-flex justify-content-center'>
+                <img
+                    className='floating'
+                    style={{maxWidth:'200px', maxHeight:'200px'}} 
+                    src={handplanetImage} 
+                />
+            </div>
+            </div>
+            
+            <div 
                 className="w-50 mx-auto p-3 spaceBackground"
                 style={{ 
                     boxShadow: '0 0 5px #e32970',

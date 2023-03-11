@@ -15,6 +15,7 @@ const AboutUs = () => {
                 selection of a pre-existing style, YoskAI will create a unique work.
             </p>
             <br/>
+            
         </div>
         <br/>
         <div className='row  '>
