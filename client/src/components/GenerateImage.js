@@ -4,10 +4,12 @@ import { getGlobalState, setGlobalState, useGlobalState } from "../globalState/G
 import Loading from './messages/Loading';
 import { connectWallet } from './web3/FunctionsWeb3'
 import handplanetImage from '../images/handPlanet.png'
+import GeneratorCounter from './GeneratorCounter.js';
 
 const GenerateImage = () => {
 
     const [connectedAccount] = useGlobalState('connectedAccount')
+    const isLoggedIn= getGlobalState('isLoggedIn');
 
     const configuration = new Configuration({
         apiKey: process.env.REACT_APP_API_KEY,
@@ -64,24 +66,31 @@ const GenerateImage = () => {
 
     return(
         <div className=''>
-           {/* <GeneratorCounter /> */}
+           { isLoggedIn ? <GeneratorCounter /> : null }
            { alert.show ? <p className='text-center'> { alert.msg } </p> : null }
             <div 
                 style={{minHeight:'120px'}} 
                 className=''>
                 { loading.show ? 
                     <Loading message={loading.msg} />
-                    :  <div className='container mt-2 mb-2 d-flex justify-content-center'>
-                            <img src={imageUrl} alt="Ai-image" onError={i => i.target.style.display='none'} />
-                        </div>  
+                    :  
+                    <div className='container mt-2 mb-2 d-flex justify-content-center'>
+                        <img src={imageUrl} alt="Ai-image" onError={i => i.target.style.display='none'} />
+                    </div>  
                 }
-                <div className='d-flex justify-content-center'>
-                <img
-                    className='floating'
-                    style={{maxWidth:'200px', maxHeight:'200px'}} 
-                    src={handplanetImage} 
-                />
-            </div>
+                { 
+                    !isLoggedIn ? 
+                        <div className='d-flex justify-content-center'>
+                            <img
+                                className='floating'
+                                style={{maxWidth:'200px', maxHeight:'200px'}} 
+                                src={handplanetImage} 
+                            />
+                        </div> 
+                : 
+                    null 
+                }
+                
             </div>
             
             <div 

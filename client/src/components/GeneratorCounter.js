@@ -3,6 +3,8 @@ import { getGlobalState } from "../globalState/GlobalState";
 
 const GeneratorCounter = () => {
     const renderGreenCircles = getGlobalState('maxRender');
+
+
     let greenList, redList;
     let totalRenders = 5;
     if( renderGreenCircles === 0 ){
@@ -27,7 +29,7 @@ const GeneratorCounter = () => {
     return(
         <div
             style={{
-                width:'350px'
+                width:'320px'
             }} 
             className="p-4 container">
                 <p className="text-center title-gradient-white-color">Left to generate</p>

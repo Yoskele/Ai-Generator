@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
 
 const Footer = () => {
-
     const [ email, setEmail ] = useState('');
+    const [ emailMessage, setEmailMessage ] = useState(false);
 
     const handleEmailSubmit = async (e) => {
-        
-        try{
-            const emailAddress = {email}
-            const response = await fetch('/api/Emails',{
-                method:'POST',
-                body: JSON.stringify(emailAddress),
-                headers:{
-                    'Content-Type': 'application/json'
+        e.preventDefault();
+        if(email.length !== 0 && email.includes('@')){
+            console.log('gege')
+            try{
+                const emailAddress = {email}
+                const response = await fetch('/api/Emails',{
+                    method:'POST',
+                    body: JSON.stringify(emailAddress),
+                    headers:{
+                        'Content-Type': 'application/json'
+                    }
+                })
+                if (response.ok) {
+                    setEmailMessage(true)
+                    setEmail('')
                 }
-            }) 
-            const json = await response.json()
-            console.log('json dsds', json)
-        }catch(error){
-            console.log('error ', error)
+            }catch(error){
+                console.log('error ', error)
+            }
         }
     }
 
@@ -31,8 +36,11 @@ const Footer = () => {
                 <h3>Don’t Miss Out, Join Now For Early Access</h3>
                 <p className='title-gradient-pink-color'> A Strong Community That Shares Knowledge, Useful Tips And Gets News </p>
                 <div className='d-flex align-items-center'>
+                    <form onSubmit={(e)=>handleEmailSubmit(e)}>
                     <input 
                         style={{width:'400px'}}
+                        type='email'
+                        value={email} 
                         className='p-2 rounded'
                         placeholder='Email address'
                         onChange={(e) => setEmail(e.target.value)}
@@ -41,15 +49,18 @@ const Footer = () => {
                         style={{cursor:'pointer'}} 
                         className='title-gradient-pink-color m-4'
                     >
+                         { emailMessage ? <p className='text-center text-bold'>Email Saved </p> : null } 
                         <p
+                            className='text-center'
                             style={{
                                 borderBottom:'1px solid gray',
                             }}
-                            onClick={() => handleEmailSubmit()}
+                            onClick={(e)=> handleEmailSubmit(e)}
                         >
                             Subscribe
                         </p>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>

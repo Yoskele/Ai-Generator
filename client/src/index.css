@@ -72,16 +72,16 @@ h3{
 
 /* Create Ball Circle */
 .circleRed{
-  width:25px;
-  height:25px;
+  width:18px;
+  height:18px;
   margin:10px;
   border-radius:50%;
   background-color:rgb(217, 16, 26);
 }
 
 .circleGreen{
-  width:25px;
-  height:25px;
+  width:18px;
+  height:18px;
   margin:10px;
   border-radius:50%;
   background-color:rgb(29, 220, 90);
