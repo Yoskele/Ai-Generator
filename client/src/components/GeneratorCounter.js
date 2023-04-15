@@ -1,8 +1,32 @@
-import React from "react";
+import React, {useEffect, useState } from "react";
 import { getGlobalState } from "../globalState/GlobalState";
 
 const GeneratorCounter = () => {
     const renderGreenCircles = getGlobalState('maxRender');
+    const [ renderAmount, setRenderAmount ] = useState(0)
+    const getRenders = async() => {
+        console.log('Getting Renders Client side... ')
+        let id = '0xB805B9f421bb21bf3AAd1a92A859179240048504'
+        const response = await fetch('/api/User/Renders/' + id);
+        const responseValue = await response.json();
+        setRenderAmount(responseValue)
+        console.log('Get User Renders ', responseValue)
+    }
+
+    const deleteRender = async() => {
+        console.log('Button Front Delete Render...');
+        let id = '0xB805B9f421bb21bf3AAd1a92A859179240048504'
+        const response = await fetch('/api/User/Render/' + id);
+        const responseValue = await response.json();
+        setRenderAmount(responseValue)
+        console.log('Delete Render ', + responseValue);
+    }
+
+    
+    useEffect(() => {
+        console.log('UseEffeect')
+        getRenders();
+    }, [])
 
 
     let greenList, redList;
@@ -33,7 +57,7 @@ const GeneratorCounter = () => {
             }} 
             className="p-4 container">
                 <p className="text-center title-gradient-white-color">Left to generate</p>
-            <ul 
+            {/* <ul 
                 id="circleContainer"
                 className="d-flex justify-content-around"
                 style={{
@@ -41,7 +65,12 @@ const GeneratorCounter = () => {
                 }}
             >
                {greenList}{redList}
-            </ul>
+            </ul> */}
+            <div className="d-flex flex-column align-items-center">
+                <h3>{renderAmount}</h3>
+                <button onClick={deleteRender} className="btn btn-primary">Delete Render</button>
+            </div>
+            
         </div>
     )
 }
